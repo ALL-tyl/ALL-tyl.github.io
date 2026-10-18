@@ -37,3 +37,103 @@ html[data-theme="dark"] #aside-content .card-widget {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
+/* ==========================================
+   极致通透 · 圆形UI毛玻璃主题
+   ========================================== */
+
+/* 1. 全局背景（必须固定，否则毛玻璃效果会失效） */
+body {
+    background-image: url('/img/秋季主背景图.png') !important; /* 这里换成你的图 */
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+/* 2. 顶部导航栏（悬浮圆形药丸风格） */
+#page-header.nav-fixed #nav {
+    background: rgba(255, 255, 255, 0.4) !important; /* 极度通透 */
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border-radius: 50px !important; /* 药丸形状 */
+    top: 15px !important;
+    left: 5% !important;
+    width: 90% !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+html[data-theme="dark"] #page-header.nav-fixed #nav {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 3. 所有卡片（文章、侧边栏、归档等）极致圆角与通透玻璃 */
+#recent-posts > .recent-post-item,
+#aside-content .card-widget,
+#page .page-title + #article-container,
+#archive, #tag, #category,
+.post-copyright, .pagination {
+    background: rgba(255, 255, 255, 0.4) !important; /* 40%白，极度通透 */
+    backdrop-filter: blur(25px) saturate(200%) !important; /* 重度模糊 */
+    -webkit-backdrop-filter: blur(25px) saturate(200%) !important;
+    border-radius: 25px !important; /* 大圆角 */
+    border: 1px solid rgba(255, 255, 255, 0.6) !important; /* 玻璃边缘高光 */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08) !important; /* 柔和悬浮阴影 */
+    overflow: hidden; /* 防止内部图片溢出圆角 */
+    margin-bottom: 20px;
+}
+
+/* 深色模式下的极致玻璃 */
+html[data-theme="dark"] #recent-posts > .recent-post-item,
+html[data-theme="dark"] #aside-content .card-widget,
+html[data-theme="dark"] #page .page-title + #article-container,
+html[data-theme="dark"] #archive, 
+html[data-theme="dark"] #tag, 
+html[data-theme="dark"] #category,
+html[data-theme="dark"] .post-copyright,
+html[data-theme="dark"] .pagination {
+    background: rgba(20, 20, 20, 0.45) !important; 
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 4. 侧边栏头像变圆形 */
+#aside-content .card-info .avatar-img img {
+    border-radius: 50% !important;
+    border: 3px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 5. 首页文章封面图适配大圆角 */
+#recent-posts > .recent-post-item .post_cover img {
+    border-radius: 25px 0 0 25px !important;
+}
+
+/* 6. 顶部大图（让Banner完全透明融入背景） */
+/*#page-header.full_page {
+    background: transparent !important;
+}
+/*
+
+
+/* 7. 按钮、标签圆润化 */
+#pagination .page-number, #pagination .extend, 
+.tag-cloud a, .category-list a {
+    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(10px) !important;
+    transition: all 0.3s ease;
+}
+.tag-cloud a:hover, .category-list a:hover, #pagination .page-number:hover {
+    background: rgba(255, 255, 255, 0.7) !important;
+    transform: translateY(-2px);
+}
+html[data-theme="dark"] .tag-cloud a, 
+html[data-theme="dark"] .category-list a, 
+html[data-theme="dark"] #pagination .page-number {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+/* 让首页顶部大图也变成大圆角 */
+#page-header {
+    border-radius: 0 0 30px 30px !important; /* 底部两个角变圆 */
+    overflow: hidden;
+}
