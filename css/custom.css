@@ -1,0 +1,39 @@
+/* 站点大标题 (首页顶部的名字) */
+#site-title {
+  font-family: 'DingTalkJinBuTi', sans-serif !important;
+}
+
+/* 文章列表的标题 */
+#recent-posts .post-title a {
+  font-family: 'DingTalkJinBuTi', sans-serif !important;
+}
+
+/* 文章正文里的 H1, H2, H3 标题 */
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  font-family: 'DingTalkJinBuTi', sans-serif !important;
+}
+
+/* 导航栏菜单文字（可选，看个人喜好） */
+#nav .site-page {
+  font-family: 'DingTalkJinBuTi', sans-serif !important;
+}
+/* 浅色模式下的毛玻璃效果 */
+html[data-theme="light"] #recent-posts > .recent-post-item,
+html[data-theme="light"] #aside-content .card-widget {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* 深色模式下的毛玻璃效果 */
+html[data-theme="dark"] #recent-posts > .recent-post-item,
+html[data-theme="dark"] #aside-content .card-widget {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
