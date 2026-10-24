@@ -137,3 +137,446 @@ html[data-theme="dark"] #pagination .page-number {
     border-radius: 0 0 30px 30px !important; /* 底部两个角变圆 */
     overflow: hidden;
 }
+
+/* ==========================================
+   追加：强制首页文章卡片变为磨砂玻璃
+   ========================================== */
+
+/* 1. 强制卡片本身透明且模糊 */
+#recent-posts > .recent-post-item {
+    background: rgba(255, 255, 255, 0.35) !important; /* 白色半透明 */
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important; /* 玻璃高光边缘 */
+    border-radius: 25px !important; /* 保持大圆角 */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1) !important; /* 柔和的悬浮阴影 */
+    overflow: hidden; 
+}
+
+/* 2. 干掉卡片内部所有可能阻挡透视的纯色背景 */
+#recent-posts > .recent-post-item .post-content,
+#recent-posts > .recent-post-item .recent-post-info {
+    background: transparent !important;
+}
+
+/* 3. 深色模式适配 */
+html[data-theme="dark"] #recent-posts > .recent-post-item {
+    background: rgba(20, 20, 20, 0.45) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ==========================================
+   终极核弹：强制首页文章卡片透明毛玻璃
+   ========================================== */
+
+/* 1. 扒掉最外层卡片的不透明白底，加上高强度毛玻璃 */
+#recent-posts > .recent-post-item,
+.recent-post-item {
+    background: rgba(255, 255, 255, 0.4) !important; /* 40%白，极度通透 */
+    backdrop-filter: blur(25px) saturate(200%) !important; 
+    -webkit-backdrop-filter: blur(25px) saturate(200%) !important;
+    border-radius: 25px !important; /* 大圆角 */
+    border: 1px solid rgba(255, 255, 255, 0.8) !important; /* 白边高光 */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important; /* 悬浮阴影 */
+    overflow: hidden !important;
+}
+
+/* 2. 暴力把所有内部可能带颜色的容器全部设为透明！ */
+#recent-posts > .recent-post-item .post-content,
+#recent-posts > .recent-post-item .recent-post-info,
+#recent-posts > .recent-post-item .recent-post-info > .article-title,
+#recent-posts > .recent-post-item .recent-post-info > .article-meta-wrap {
+    background: transparent !important;
+}
+
+/* 3. 深色模式下的同步强覆盖 */
+html[data-theme="dark"] #recent-posts > .recent-post-item,
+html[data-theme="dark"] .recent-post-item {
+    background: rgba(25, 25, 25, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ==========================================
+   追加：底部页脚 (Footer) 透明毛玻璃化
+   ========================================== */
+
+/* 1. 彻底扒掉页脚的背景色，改为半透明+毛玻璃 */
+#footer {
+    background: rgba(255, 255, 255, 0.3) !important; /* 30%白，非常通透 */
+    backdrop-filter: blur(20px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.5) !important; /* 顶部玻璃高光线 */
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.05) !important; /* 柔和的向上阴影 */
+    color: #333 !important; /* 确保文字在浅色玻璃下能看清 */
+}
+
+/* 2. 确保页脚内的文字和链接颜色适配 */
+#footer .footer-separator,
+#footer .copyright,
+#footer a {
+    color: #555 !important; 
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important; /* 文字加一点白色发光，在复杂背景下更清晰 */
+}
+
+#footer a:hover {
+    color: #49b1f5 !important; /* 悬停时保持主题蓝 */
+}
+
+/* 3. 深色模式下的页脚适配 */
+html[data-theme="dark"] #footer {
+    background: rgba(20, 20, 20, 0.4) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #ccc !important;
+}
+
+html[data-theme="dark"] #footer .footer-separator,
+html[data-theme="dark"] #footer .copyright,
+html[data-theme="dark"] #footer a {
+    color: #bbb !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important; /* 深色下改用黑色发光 */
+}
+
+/* ==========================================
+   追加：侧边滚动条 & 右下角按钮 液态玻璃化
+   ========================================== */
+
+/* 1. 侧边滚动条（极简液态） */
+::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(150, 150, 150, 0.4) !important; /* 半透明灰色 */
+    backdrop-filter: blur(10px) !important;
+    border-radius: 10px !important; /* 圆润 */
+    border: 2px solid transparent !important; /* 制造内边距感 */
+    background-clip: padding-box !important;
+    transition: background 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(120, 120, 120, 0.8) !important; /* 悬停时颜色加深 */
+    background-clip: padding-box !important;
+}
+
+/* 2. 右下角按钮（回到顶部 / 评论等）液态玻璃化 */
+#rightside > div > button,
+#rightside > div > a {
+    background: rgba(255, 255, 255, 0.4) !important; /* 40%白通透 */
+    backdrop-filter: blur(15px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(15px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important; /* 玻璃高光边 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 50% !important; /* 完美的圆形 */
+    color: #333 !important; /* 图标颜色：深灰，在浅色玻璃上清晰可见 */
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+#rightside > div > button:hover,
+#rightside > div > a:hover {
+    background: rgba(255, 255, 255, 0.8) !important; /* 悬停时变白变实 */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-2px) scale(1.05); /* 悬浮动画：微微上浮放大 */
+}
+
+/* 3. 深色模式下的滚动条和按钮适配 */
+html[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: rgba(80, 80, 80, 0.6) !important;
+    background-clip: padding-box !important;
+}
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: rgba(150, 150, 150, 0.8) !important;
+    background-clip: padding-box !important;
+}
+
+html[data-theme="dark"] #rightside > div > button,
+html[data-theme="dark"] #rightside > div > a {
+    background: rgba(30, 30, 30, 0.5) !important; /* 深色通透 */
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #eee !important; /* 图标颜色：亮白，在深色玻璃上清晰 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="dark"] #rightside > div > button:hover,
+html[data-theme="dark"] #rightside > div > a:hover {
+    background: rgba(50, 50, 50, 0.8) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ==========================================
+   修正版：完美背景铺满 + 滚动条悬浮
+   ========================================== */
+
+/* 1. 重新给你的背景图层上色，强制铺满全屏 */
+#web_bg {
+    background-image: url('/img/你的背景图名字.jpg') !important; /* 换成你原本的背景图路径 */
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+/* 2. 专门修复右侧白色轨道缝隙 */
+::-webkit-scrollbar {
+    width: 8px !important;
+    background: transparent !important; 
+}
+::-webkit-scrollbar-track {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* 3. 滚动条本体（保留液态感） */
+::-webkit-scrollbar-thumb {
+    background: rgba(150, 150, 150, 0.4) !important;
+    border-radius: 10px !important;
+    border: 2px solid transparent !important; 
+    background-clip: padding-box !important; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(120, 120, 120, 0.8) !important;
+    background-clip: padding-box !important;
+}
+
+/* 4. 深色模式适配 */
+html[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: rgba(80, 80, 80, 0.6) !important;
+    background-clip: padding-box !important;
+}
+
+/* ==========================================
+   绝杀：针对 #card-info-btn 的专属液态玻璃
+   ========================================== */
+
+/* 1. 浅色模式下的按钮本体 */
+#aside-content .card-info #card-info-btn {
+    background: rgba(255, 255, 255, 0.4) !important; /* 极透白玻璃 */
+    backdrop-filter: blur(15px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(15px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.7) !important; /* 边缘高光 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important; /* 悬浮阴影 */
+    border-radius: 25px !important; /* 圆润的药丸形 */
+    
+    /* 强制文字和图标为深灰色 */
+    color: #333 !important; 
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* 专门抓取里面的文字（span）和图标（i），防止它们自带颜色 */
+#aside-content .card-info #card-info-btn span,
+#aside-content .card-info #card-info-btn i {
+    color: #333 !important;
+}
+
+/* 2. 悬停时的动态效果 */
+#aside-content .card-info #card-info-btn:hover {
+    background: rgba(255, 255, 255, 0.85) !important; /* 变实变白 */
+    transform: translateY(-2px) !important; /* 微微上浮 */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+}
+/* 悬停时文字变主题蓝 */
+#aside-content .card-info #card-info-btn:hover span,
+#aside-content .card-info #card-info-btn:hover i {
+    color: #49b1f5 !important; 
+}
+
+/* 3. 深色模式适配 */
+html[data-theme="dark"] #aside-content .card-info #card-info-btn {
+    background: rgba(20, 20, 20, 0.5) !important; /* 极透黑玻璃 */
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+/* 深色模式下文字和图标变亮白 */
+html[data-theme="dark"] #aside-content .card-info #card-info-btn span,
+html[data-theme="dark"] #aside-content .card-info #card-info-btn i {
+    color: #eee !important;
+}
+
+/* 深色模式悬停 */
+html[data-theme="dark"] #aside-content .card-info #card-info-btn:hover {
+    background: rgba(60, 60, 60, 0.8) !important;
+}
+html[data-theme="dark"] #aside-content .card-info #card-info-btn:hover span,
+html[data-theme="dark"] #aside-content .card-info #card-info-btn:hover i {
+    color: #49b1f5 !important;
+}
+
+/* ==========================================
+   强制覆盖：页脚文字颜色终极修复
+   ========================================== */
+
+/* 1. 浅色模式：强制所有文本、链接、图标变深灰色 */
+#footer,
+#footer span,
+#footer a,
+#footer .copyright,
+#footer .footer-separator,
+#footer i,
+#footer div {
+    color: #333 !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9) !important; /* 加一点白色发光，防止背景太花看不清 */
+}
+
+/* 悬停时变主题蓝 */
+#footer a:hover,
+#footer a:hover span {
+    color: #49b1f5 !important;
+}
+
+/* 2. 深色模式：强制所有文本、链接、图标变亮白色 */
+html[data-theme="dark"] #footer,
+html[data-theme="dark"] #footer span,
+html[data-theme="dark"] #footer a,
+html[data-theme="dark"] #footer .copyright,
+html[data-theme="dark"] #footer .footer-separator,
+html[data-theme="dark"] #footer i,
+html[data-theme="dark"] #footer div {
+    color: #eee !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9) !important; /* 深色下加黑色阴影 */
+}
+
+/* 深色模式悬停 */
+html[data-theme="dark"] #footer a:hover,
+html[data-theme="dark"] #footer a:hover span {
+    color: #49b1f5 !important;
+}
+
+/* ==========================================
+   搜索界面：液态玻璃统一风格
+   ========================================== */
+
+/* 1. 搜索框本体 */
+#local-search .search-dialog {
+    background: rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(25px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+    border-radius: 25px !important;
+    border: 1px solid rgba(255, 255, 255, 0.7) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+    overflow: hidden;
+}
+
+/* 2. 搜索输入框内部 */
+#local-search .search-dialog input {
+    background: rgba(255, 255, 255, 0.5) !important; /* 半透明白底 */
+    border-radius: 15px !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    color: #333 !important;
+    padding: 10px 15px !important;
+}
+#local-search .search-dialog input:focus {
+    background: rgba(255, 255, 255, 0.8) !important; /* 输入时变实，防看不清 */
+    outline: none;
+}
+
+/* 3. 搜索出来的结果列表项 */
+#local-search .search-result {
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 15px !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    margin-bottom: 10px;
+    padding: 15px !important;
+    transition: all 0.3s ease;
+}
+#local-search .search-result:hover {
+    background: rgba(255, 255, 255, 0.7) !important; /* 悬停高亮 */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* 搜索文字高亮颜色 */
+#local-search .search-keyword {
+    color: #49b1f5 !important; /* 主题蓝 */
+    font-weight: bold;
+}
+
+/* 4. 搜索界面的纯白遮罩背景（改为半透明，露出背景图） */
+#local-search .search-mask {
+    background: rgba(0, 0, 0, 0.4) !important; /* 半透明黑遮罩 */
+    backdrop-filter: blur(5px) !important; /* 遮罩也带一点模糊 */
+}
+
+/* 5. 搜索框右上角的关闭按钮（修复跳动Bug） */
+/* 搜索框右上角的关闭按钮（极简纯变色，绝对不跳） */
+#local-search .search-close-button {
+    color: #555 !important;
+    transition: color 0.3s ease !important; /* 只过渡颜色 */
+}
+
+#local-search .search-close-button:hover {
+    color: #49b1f5 !important;
+    /* 绝对不要加 transform、box-shadow、border 等改变尺寸的样式 */
+}
+
+/* 深色模式适配 */
+html[data-theme="dark"] #local-search .search-close-button {
+    color: #aaa !important;
+}
+
+html[data-theme="dark"] #local-search .search-close-button:hover {
+    color: #49b1f5 !important;
+}
+
+/* ==========================================
+   深色模式适配
+   ========================================== */
+html[data-theme="dark"] #local-search .search-dialog {
+    background: rgba(25, 25, 25, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+html[data-theme="dark"] #local-search .search-dialog input {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #eee !important;
+}
+html[data-theme="dark"] #local-search .search-dialog input:focus {
+    background: rgba(0, 0, 0, 0.6) !important;
+}
+html[data-theme="dark"] #local-search .search-result {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+html[data-theme="dark"] #local-search .search-result:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+html[data-theme="dark"] #local-search .search-mask {
+    background: rgba(0, 0, 0, 0.6) !important;
+}
+html[data-theme="dark"] #local-search .search-close-button {
+    color: #aaa !important;
+}
+
+/* ==========================================
+   终极隐身：干掉搜索框底部的顽固横条
+   ========================================== */
+
+/* 抓取搜索框里所有可能作为底栏的容器 */
+#local-search .search-dialog .search-nav,
+#local-search .search-dialog .search-footer,
+#local-search .search-dialog .search-hint,
+#local-search .search-dialog .search-meta {
+    display: none !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* 如果它是一条线，或者是带有特定属性的框，直接连边带底全扒光 */
+#local-search .search-dialog hr {
+    display: none !important;
+}
+#local-search .search-dialog div[class*="nav"],
+#local-search .search-dialog div[class*="foot"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
